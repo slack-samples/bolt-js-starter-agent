@@ -1,0 +1,18 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directories:
+      - "/openai-agents-sdk"
+      - "/claude-agent-sdk"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "npm"
+      - "dependencies"
+    ignore:
+      - dependency-name: "@slack/bolt"
+        # Vendored from bolt-js main — managed manually
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
