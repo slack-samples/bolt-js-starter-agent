@@ -56,7 +56,7 @@ export const starterAgent = new Agent({
  * Run the agent, optionally connecting to the Slack MCP server.
  * @param {string | import('@openai/agents').AgentInputItem[]} inputItems
  * @param {import('./deps.js').AgentDeps} deps
- * @returns {Promise<import('@openai/agents').RunResult<any>>}
+ * @returns {Promise<import('@openai/agents').RunResult<any, any>>}
  */
 export async function runAgent(inputItems, deps) {
   if (deps.userToken) {
