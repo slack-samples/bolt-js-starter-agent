@@ -292,12 +292,12 @@ The `store.js` file implements an in-memory session ID store, keyed by channel a
 
 ## Troubleshooting
 
-### MCP Server connection error: `HTTP error 400 (Bad Request)`
+### MCP Server connection error: `App is not enabled for Slack MCP server access`
 
 If you see an error like:
 
 ```
-Failed to connect to MCP server 'streamable_http: https://mcp.slack.com/mcp': HTTP error 400 (Bad Request)
+Error: Streamable HTTP error: Error POSTing to endpoint: {"jsonrpc":"2.0","id":null,"error":{"code":-32600,"message":"App is not enabled for Slack MCP server access. Please enable it here: https://api.slack.com/apps/YOUR_APP_ID/app-assistant"}}
 ```
 
 This means the Slack MCP feature has not been enabled for your app. There is no manifest property for this yet, so it must be toggled on manually:
