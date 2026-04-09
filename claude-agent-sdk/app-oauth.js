@@ -3,7 +3,8 @@ import 'dotenv/config';
 import { readFileSync } from 'node:fs';
 
 import { App, LogLevel } from '@slack/bolt';
-import { FileInstallationStore } from '@slack/oauth';
+import pkg from '@slack/oauth';
+const { FileInstallationStore } = pkg;
 
 import { registerListeners } from './listeners/index.js';
 
