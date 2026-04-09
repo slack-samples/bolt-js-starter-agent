@@ -40,7 +40,7 @@ export async function handleMessage({ client, context, event, logger, say, saySt
     const channelId = event.channel;
     const text = event.text || '';
     const threadTs = event.thread_ts || event.ts;
-    const userId = context.userId;
+    const userId = /** @type {string} */ (context.userId);
 
     // Get session ID for conversation context
     const existingSessionId = sessionStore.getSession(channelId, threadTs);
