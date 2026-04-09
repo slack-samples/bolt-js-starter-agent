@@ -106,7 +106,8 @@ export async function runAgent(text, sessionId = undefined, deps = undefined) {
         });
         return { content: [{ type: 'text', text: `Reacted with :${emoji_name}:` }] };
       } catch (e) {
-        return { content: [{ type: 'text', text: `Could not add reaction: ${e.data?.error || e.message}` }] };
+        const err = /** @type {any} */ (e);
+        return { content: [{ type: 'text', text: `Could not add reaction: ${err.data?.error || err.message}` }] };
       }
     },
   );
