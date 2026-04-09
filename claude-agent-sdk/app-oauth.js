@@ -12,7 +12,32 @@ const manifest = JSON.parse(readFileSync('manifest.json', 'utf-8'));
 const botScopes = manifest.oauth_config.scopes.bot;
 const userScopes = manifest.oauth_config.scopes.user;
 
+// ---------------------------------------------------------------------------
+// Installation store with bot-token fallback
+// ---------------------------------------------------------------------------
+// When installed via Slack CLI, SLACK_BOT_TOKEN is available but Bolt clears
+// it when OAuth options are present. This wrapper lets the bot token serve as
+// a fallback so App Home (with the OAuth install URL) and basic bot operations
+// work before anyone has completed the OAuth flow.
+
+const fileStore = new FileInstallationStore();
 const fallbackBotToken = process.env.SLACK_BOT_TOKEN;
+
+/** @type {import('@slack/bolt').InstallationStore} */
+const installationStore = {
+  storeInstallation: async (installation) => fileStore.storeInstallation(installation),
+  fetchInstallation: async (query) => {
+    try {
+      return await fileStore.fetchInstallation(query);
+    } catch {
+      if (fallbackBotToken) {
+        return /** @type {any} */ ({ bot: { token: fallbackBotToken } });
+      }
+      throw new Error('No installation found and no fallback bot token configured');
+    }
+  },
+  deleteInstallation: async (query) => fileStore.deleteInstallation(query),
+};
 
 const app = new App({
   logLevel: LogLevel.DEBUG,
@@ -23,36 +48,10 @@ const app = new App({
   stateSecret: 'bolt-js-starter-agent',
   scopes: botScopes,
   userScopes,
-  installationStore: new FileInstallationStore(),
+  installationStore,
   installerOptions: {
     stateVerification: true,
   },
-  authorize: fallbackBotToken
-    ? async ({ teamId, enterpriseId }) => {
-        // Try the installation store first
-        const installationStore = new FileInstallationStore();
-        try {
-          const installation = await installationStore.fetchInstallation({
-            teamId,
-            enterpriseId,
-            isEnterpriseInstall: !!enterpriseId,
-          });
-          if (installation) {
-            return {
-              botToken: installation.bot?.token,
-              botId: installation.bot?.id,
-              botUserId: installation.bot?.userId,
-              userToken: installation.user?.token,
-            };
-          }
-        } catch {
-          // Fall through to fallback
-        }
-
-        // Fall back to SLACK_BOT_TOKEN for pre-OAuth bootstrap
-        return { botToken: fallbackBotToken };
-      }
-    : undefined,
 });
 
 registerListeners(app);
