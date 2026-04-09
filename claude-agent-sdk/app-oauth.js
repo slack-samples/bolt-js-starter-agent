@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 
 import { App, LogLevel } from '@slack/bolt';
 import pkg from '@slack/oauth';
+
 const { FileInstallationStore } = pkg;
 
 import { registerListeners } from './listeners/index.js';
@@ -20,7 +21,7 @@ const userScopes = manifest.oauth_config.scopes.user;
 // a fallback so App Home (with the OAuth install URL) and basic bot operations
 // work before anyone has completed the OAuth flow.
 
-const fileStore = new FileInstallationStore();
+const fileStore = new FileInstallationStore({ baseDir: './data/installations' });
 const fallbackBotToken = process.env.SLACK_BOT_TOKEN;
 
 /** @type {import('@slack/bolt').InstallationStore} */
@@ -47,10 +48,10 @@ const app = new App({
   clientSecret: process.env.SLACK_CLIENT_SECRET,
   stateSecret: 'bolt-js-starter-agent',
   scopes: botScopes,
-  userScopes,
   installationStore,
   installerOptions: {
     stateVerification: true,
+    userScopes,
   },
 });
 
