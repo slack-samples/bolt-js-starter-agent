@@ -42,7 +42,7 @@ export async function handleAppMentioned({ client, context, event, logger, say, 
 
     // Run the agent with deps for tool access
     const deps = { client, userId, channelId, threadTs, messageTs: event.ts, userToken: context.userToken };
-    const { responseText, sessionId: newSessionId } = await runAgent(cleanedText, existingSessionId, deps);
+    const { responseText, sessionId: newSessionId } = await runAgent(cleanedText, existingSessionId ?? undefined, deps);
 
     // Stream response in thread with feedback buttons
     const streamer = sayStream();
