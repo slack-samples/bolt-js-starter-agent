@@ -25,4 +25,4 @@ When connected to the [Slack MCP Server](https://github.com/slackapi/slack-mcp-s
 
 ## Local Development
 
-This repo uses a vendored (pre-release) build of `@slack/bolt` from the [bolt-js](https://github.com/slackapi/bolt-js) `main` branch. The `.tgz` file lives in `vendor/` and is referenced by each app's `package.json`.
+This repo uses [`@slack/bolt`](https://www.npmjs.com/package/@slack/bolt) from npm.

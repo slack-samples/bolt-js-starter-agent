@@ -9,9 +9,6 @@ updates:
     labels:
       - "npm"
       - "dependencies"
-    ignore:
-      - dependency-name: "@slack/bolt"
-        # Vendored from bolt-js main — managed manually
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
