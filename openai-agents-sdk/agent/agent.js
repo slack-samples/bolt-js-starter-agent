@@ -60,12 +60,10 @@ export const starterAgent = new Agent({
  */
 export async function runAgent(inputItems, deps) {
   if (deps.userToken) {
-    const mcpServer = new MCPServerStreamableHttp(
-      /** @type {any} */ ({
-        url: SLACK_MCP_URL,
-        headers: { Authorization: `Bearer ${deps.userToken}` },
-      }),
-    );
+    const mcpServer = new MCPServerStreamableHttp({
+      url: SLACK_MCP_URL,
+      requestInit: { headers: { Authorization: `Bearer ${deps.userToken}` } },
+    });
 
     try {
       await mcpServer.connect();
