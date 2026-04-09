@@ -7,7 +7,7 @@ import { buildAppHomeView } from '../views/app-home-builder.js';
  */
 export async function handleAppHomeOpened({ client, context, logger }) {
   try {
-    const userId = context.userId;
+    const userId = /** @type {string} */ (context.userId);
     let installUrl = null;
     let isConnected = false;
 
