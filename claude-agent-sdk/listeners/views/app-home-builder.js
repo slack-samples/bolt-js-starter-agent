@@ -41,7 +41,7 @@ export function buildAppHomeView(installUrl = null, isConnected = false) {
         elements: [
           {
             type: 'mrkdwn',
-            text: 'The assistant can search messages, read channels, and more.',
+            text: 'The agent can search messages, read channels, and more.',
           },
         ],
       },
@@ -60,7 +60,7 @@ export function buildAppHomeView(installUrl = null, isConnected = false) {
         elements: [
           {
             type: 'mrkdwn',
-            text: 'The Slack MCP Server enables the assistant to search messages, read channels, and more.',
+            text: 'The Slack MCP Server enables the agent to search messages, read channels, and more.',
           },
         ],
       },
@@ -79,7 +79,7 @@ export function buildAppHomeView(installUrl = null, isConnected = false) {
         elements: [
           {
             type: 'mrkdwn',
-            text: 'The Slack MCP Server enables the assistant to search messages, read channels, and more.',
+            text: 'The Slack MCP Server enables the agent to search messages, read channels, and more.',
           },
         ],
       },
