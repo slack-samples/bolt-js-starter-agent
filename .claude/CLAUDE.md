@@ -48,7 +48,7 @@ Three-layer design: **app.js** -> **listeners/** -> **agent/**
 **Entry point (`app.js`)** initializes Bolt with Socket Mode and calls `registerListeners(app)`.
 
 **Listeners** are organized by Slack platform feature:
-- `listeners/events/` -- `app-home-opened`, `app-mentioned`, `message`, `assistant-thread-started`
+- `listeners/events/` -- `app-home-opened` (Home tab view + Messages-tab suggested prompts via `event.tab` branch), `app-mentioned`, `message`
 - `listeners/actions/` -- `feedback-buttons`
 
 Each sub-module has a `register(app)` function called from `listeners/index.js`.
