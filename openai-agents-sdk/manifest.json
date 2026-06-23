@@ -3,7 +3,7 @@
     "name": "Starter Agent - OpenAI SDK"
   },
   "features": {
-    "assistant_view": {
+    "agent_view": {
       "assistant_description": "Hi, I am an agent built using Bolt for JavaScript. I am here to help you out!",
       "suggested_prompts": []
     },
@@ -59,9 +59,9 @@
     "event_subscriptions": {
       "request_url": "https://ngrok-free.app/slack/events",
       "bot_events": [
+        "app_context_changed",
         "app_home_opened",
         "app_mention",
-        "assistant_thread_started",
         "message.channels",
         "message.groups",
         "message.im"
