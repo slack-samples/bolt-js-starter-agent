@@ -11,12 +11,12 @@
     "test": "node --test"
   },
   "dependencies": {
-    "@openai/agents": "^0.11.6",
+    "@openai/agents": "^0.12.0",
     "@slack/bolt": "^4.7.3",
     "dotenv": "~17.4.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.5.0",
+    "@biomejs/biome": "^2.5.1",
     "@slack/cli-hooks": "^1.3.3",
     "typescript": "^6.0.3"
   }
