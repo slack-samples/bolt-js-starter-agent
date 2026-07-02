@@ -13,7 +13,7 @@
   "dependencies": {
     "@openai/agents": "^0.12.0",
     "@slack/bolt": "^4.7.3",
-    "@slack/types": "file:./slack-types-2.21.1.tgz",
+    "@slack/types": "file:slack-types-2.21.1.tgz",
     "dotenv": "~17.4.2"
   },
   "devDependencies": {
