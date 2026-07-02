@@ -29,7 +29,6 @@ export async function handleAppContextChanged({ client, event, logger }) {
   if (prompts.length === 0) return;
 
   try {
-    // @ts-expect-error — thread_ts not required for agent_view DMs
     await client.assistant.threads.setSuggestedPrompts({
       channel_id: event.channel,
       title: "Based on what you're viewing:",
