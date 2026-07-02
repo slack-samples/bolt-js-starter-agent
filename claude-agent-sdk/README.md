@@ -268,10 +268,9 @@ Every incoming request is routed to a "listener". This directory groups each lis
 
 **`/listeners/events`** — Handles incoming events:
 
-* `app-home-opened.js` — Publishes the App Home view with a welcome message and MCP status.
+* `app-home-opened.js` — Publishes the App Home view, or pins suggested prompts to the agent DM Messages tab (branches on `event.tab`).
 * `app-mentioned.js` — Responds to @mentions in channels.
 * `message.js` — Responds to direct messages from users.
-* `assistant-thread-started.js` — Sets suggested prompts for assistant threads.
 
 **`/listeners/actions`** — Handles interactive components:
 

@@ -4,7 +4,7 @@
   },
   "features": {
     "agent_view": {
-      "assistant_description": "Hi, I am an agent built using Bolt for JavaScript. I am here to help you out!",
+      "agent_description": "Hi, I am an agent built using Bolt for JavaScript. I am here to help you out!",
       "suggested_prompts": []
     },
     "app_home": {
