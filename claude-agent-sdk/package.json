@@ -20,5 +20,8 @@
     "@biomejs/biome": "^2.5.7",
     "@slack/cli-hooks": "^2.0.0",
     "typescript": "^7.0.2"
+  },
+  "overrides": {
+    "fast-uri": "4.1.2"
   }
 }
