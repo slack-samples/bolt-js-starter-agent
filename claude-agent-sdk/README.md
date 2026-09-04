@@ -25,11 +25,9 @@ Before getting started, make sure you have a development workspace where you hav
 
 Join the [Slack Developer Program](https://api.slack.com/developer-program) for exclusive access to sandbox environments for building and testing your apps, tooling, and resources created to help you build and grow.
 
-### Slack Skills plugin
+### Slack Skills plugin for coding agents
 
 If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start. It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing. It's tooling for your agent, not a dependency of this app, so it isn't part of `npm install`.
-
-This project already enables the plugin for Claude Code in [`.claude/settings.json`](./.claude/settings.json), so once it's installed there is no extra step to turn it on here. Install commands for Claude Code, Cursor, Codex, and other agents are in the [plugin docs](https://docs.slack.dev/ai/slack-skills-plugin/).
 
 ### Create the Slack app
 
