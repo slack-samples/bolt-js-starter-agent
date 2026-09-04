@@ -29,7 +29,13 @@ Join the [Slack Developer Program](https://api.slack.com/developer-program) for 
 
 If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start. It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing. It's tooling for your agent, not a dependency of this app, so it isn't part of `npm install`.
 
-Claude Code is already wired up here: this project enables the plugin in [`.claude/settings.json`](./.claude/settings.json), so Claude Code surfaces the install command when you open a session in this directory. For Cursor, Codex, and every other agent, the per-agent install commands are in the [plugin docs](https://docs.slack.dev/ai/slack-skills-plugin/).
+In Claude Code, install it with:
+
+```
+/plugin install slack@claude-plugins-official
+```
+
+This project already enables the plugin in [`.claude/settings.json`](./.claude/settings.json), so installing it is the only step. For Cursor, Codex, and every other agent, the per-agent install commands are in the [plugin docs](https://docs.slack.dev/ai/slack-skills-plugin/).
 
 ### Create the Slack app
 

@@ -17,7 +17,7 @@ All implementations share the same Slack listener layer and the same user experi
 
 If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start. It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing.
 
-Both implementations enable the plugin for Claude Code in their `.claude/settings.json`. For Cursor, Codex, and every other agent, the per-agent install commands are in the [plugin docs](https://docs.slack.dev/ai/slack-skills-plugin/).
+In Claude Code, install it with `/plugin install slack@claude-plugins-official`. Both implementations already enable the plugin in their `.claude/settings.json`, so installing it is the only step. For Cursor, Codex, and every other agent, the per-agent install commands are in the [plugin docs](https://docs.slack.dev/ai/slack-skills-plugin/).
 
 ## What It Can Do
 
