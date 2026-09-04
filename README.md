@@ -13,6 +13,10 @@ This repo contains the same app built with two different AI agent frameworks. Pi
 
 All implementations share the same Slack listener layer and the same user experience. The only difference is how the agent is defined and executed under the hood.
 
+## Slack Skills Plugin for Coding Agents
+
+If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start. It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing.
+
 ## What It Can Do
 
 The starter agent interacts with users through four entry points:
