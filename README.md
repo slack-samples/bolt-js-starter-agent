@@ -13,9 +13,9 @@ This repo contains the same app built with two different AI agent frameworks. Pi
 
 All implementations share the same Slack listener layer and the same user experience. The only difference is how the agent is defined and executed under the hood.
 
-## Slack Skills Plugin for Coding Agents
+## Slack Skills Plugin for Claude Code, Codex, Cursor, and Other Coding Agents
 
-If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start.
+If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start. That page has install steps for Claude Code, Codex, and Cursor, and `npx skills` for other agents.
 
 It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing.
 
