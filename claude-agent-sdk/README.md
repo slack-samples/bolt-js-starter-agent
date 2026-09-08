@@ -27,7 +27,9 @@ Join the [Slack Developer Program](https://api.slack.com/developer-program) for 
 
 ### Slack Skills plugin for coding agents
 
-If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start. It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing. It's tooling for your agent, not a dependency of this app, so it isn't part of `npm install`.
+If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start.
+
+It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing.
 
 ### Create the Slack app
 
