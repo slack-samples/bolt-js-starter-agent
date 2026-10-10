@@ -25,6 +25,12 @@ Before getting started, make sure you have a development workspace where you hav
 
 Join the [Slack Developer Program](https://api.slack.com/developer-program) for exclusive access to sandbox environments for building and testing your apps, tooling, and resources created to help you build and grow.
 
+### Slack Skills plugin for Claude Code, Codex, Cursor, and other coding agents
+
+If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start. That page has install steps for Claude Code, Codex, and Cursor, and `npx skills` for other agents.
+
+It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing.
+
 ### Create the Slack app
 
 <details><summary><strong>Using Slack CLI</strong></summary>
