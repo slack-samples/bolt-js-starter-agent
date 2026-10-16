@@ -13,11 +13,34 @@ This repo contains the same app built with two different AI agent frameworks. Pi
 
 All implementations share the same Slack listener layer and the same user experience. The only difference is how the agent is defined and executed under the hood.
 
-## Slack Skills Plugin for Claude Code, Codex, Cursor, and Other Coding Agents
+## Building with a Coding Agent
 
-If you're building this app with a coding agent, install the [Slack Skills plugin](https://docs.slack.dev/ai/slack-skills-plugin/) for that agent before you start. That page has install steps for Claude Code, Codex, and Cursor, and `npx skills` for other agents.
+Install the [Slack MCP and Skills Plugin](https://docs.slack.dev/ai/slack-skills-plugin/) so your coding agent can create, run, and deploy Slack apps, look up Web API methods and scopes, and build Block Kit without guessing.
 
-It teaches the agent to scaffold Slack apps, look up Web API methods and OAuth scopes, and validate Block Kit instead of guessing.
+**Claude Code**: run this in a Claude Code session.
+
+```
+/plugin install slack@claude-plugins-official
+```
+
+**Codex**: run this in your terminal.
+
+```sh
+codex plugin marketplace add slackapi/slack-skills-plugin
+codex plugin add slack@slack
+```
+
+**Cursor**: run this in a Cursor Agent chat.
+
+```
+/add-plugin slack
+```
+
+**Other agents**: install the skills with `npx skills`, using your [agent's identifier](https://github.com/vercel-labs/skills#supported-agents).
+
+```sh
+npx skills add slackapi/slack-skills-plugin -y -a <agent>
+```
 
 ## What It Can Do
 
