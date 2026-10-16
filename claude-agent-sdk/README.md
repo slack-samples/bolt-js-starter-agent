@@ -52,6 +52,9 @@ codex plugin add slack@slack
 
 ```sh
 npx skills add slackapi/slack-skills-plugin -y -a <agent>
+
+# For example, OpenCode
+npx skills add slackapi/slack-skills-plugin -y -a opencode
 ```
 
 ### Create the Slack app
