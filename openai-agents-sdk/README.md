@@ -25,7 +25,7 @@ Before getting started, make sure you have a development workspace where you hav
 
 Join the [Slack Developer Program](https://api.slack.com/developer-program) for exclusive access to sandbox environments for building and testing your apps, tooling, and resources created to help you build and grow.
 
-### Building with a Coding Agent
+### Claude Code, Codex, Cursor, and Other Coding Agents
 
 Install the [Slack MCP and Skills Plugin](https://docs.slack.dev/ai/slack-skills-plugin/) so your coding agent can create, run, and deploy Slack apps, look up Web API methods and scopes, and build Block Kit without guessing.
 
