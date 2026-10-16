@@ -29,26 +29,34 @@ Join the [Slack Developer Program](https://api.slack.com/developer-program) for 
 
 Install the [Slack MCP and Skills Plugin](https://docs.slack.dev/ai/slack-skills-plugin/) so your coding agent can create, run, and deploy Slack apps, look up Web API methods and scopes, and build Block Kit without guessing.
 
-**Claude Code**: run this in a Claude Code session.
+**Claude Code**
+
+Run this in a Claude Code session:
 
 ```
 /plugin install slack@claude-plugins-official
 ```
 
-**Codex**: run this in your terminal.
+**Codex**
+
+Run this in your terminal:
 
 ```sh
 codex plugin marketplace add slackapi/slack-skills-plugin
 codex plugin add slack@slack
 ```
 
-**Cursor**: run this in a Cursor Agent chat.
+**Cursor**
+
+Run this in a Cursor Agent chat:
 
 ```
 /add-plugin slack
 ```
 
-**Other agents**: install the skills with `npx skills`, using your [agent's identifier](https://github.com/vercel-labs/skills#supported-agents).
+**Other agents**
+
+Install the skills with `npx skills`, using your [agent's identifier](https://github.com/vercel-labs/skills#supported-agents):
 
 ```sh
 npx skills add slackapi/slack-skills-plugin -y -a <agent>
