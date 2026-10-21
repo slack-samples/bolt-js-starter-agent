@@ -14,32 +14,6 @@ To install the Slack plugin for your coding agent, follow [Claude Code, Codex, C
 
 Run `npm run lint`, `npm run check`, and `npm test`. CI runs the same on every PR.
 
-## Architecture
-
-Three-layer design: **app.js** -> **listeners/** -> **agent/**
-
-**Entry point (`app.js`)** initializes Bolt with Socket Mode and calls `registerListeners(app)`.
-
-**Listeners** are organized by Slack platform feature:
-- `listeners/events/` -- `app-home-opened` (Home tab view + Messages-tab suggested prompts via `event.tab` branch), `app-mentioned`, `message`
-- `listeners/actions/` -- `feedback-buttons`
-
-Each sub-module has a `register(app)` function called from `listeners/index.js`.
-
-**AgentDeps** carries `client`, `userId`, `channelId`, `threadTs`, `messageTs`, `userToken`. Constructed in each listener handler and passed to the agent at runtime.
-
-**Handler flow** (DM, mention): get history from store -> run agent -> stream response in thread with feedback blocks -> store updated history.
-
-## Claude Agent SDK Specifics
-
-**Agent (`agent/agent.js`)** uses `query()` async generator from `@anthropic-ai/claude-agent-sdk`. Tools are registered via `createSdkMcpServer()` and passed as `mcpServers` in options. The `runAgent()` function is async and returns `{ responseText, sessionId }`.
-
-**Tools** are defined with `tool()` from `@anthropic-ai/claude-agent-sdk` using Zod schemas. One example tool (emoji reaction) is included. Tools are created as closures inside `runAgent()` to capture `deps`.
-
-**Conversation history** is managed server-side by the Claude Agent SDK via sessions. The local `SessionStore` (`thread-context/store.js`) only maps `channelId:threadTs` to session IDs, with TTL-based cleanup. Sessions are resumed via `{ resume: sessionId }`.
-
-**Feedback blocks** use the `context_actions` block type with `feedback_buttons` elements. A single `feedback` action ID is registered.
-
 ## Code Style
 
 - ES modules (`"type": "module"` in package.json)
