@@ -1,6 +1,8 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to coding agents (Claude Code, Codex, Cursor, and others) when working with code in this repository.
+
+To install the Slack plugin for your coding agent, follow [Claude Code, Codex, Cursor, and Other Coding Agents](./README.md#claude-code-codex-cursor-and-other-coding-agents) in the README.
 
 ## What This Is
 
@@ -70,13 +72,13 @@ Each sub-module has a `register(app)` function called from `listeners/index.js`.
 | Tool context | Closure-based (tools capture `deps`) | `context.deps` parameter |
 | Execution | `runAgent(text, sessionId, deps)` | `runAgent(inputItems, deps)` |
 | Result output | `{ responseText, sessionId }` | `result.finalOutput` and `result.history` |
-| Conversation history | Session-based via `resume` (server-side) — `SessionStore` | Full history stored locally — `ConversationStore` |
+| Conversation history | Session-based via `resume` (server-side), `SessionStore` | Full history stored locally, `ConversationStore` |
 | API key env var | `ANTHROPIC_API_KEY` | `OPENAI_API_KEY` |
 
 ## Code Style
 
 - ES modules (`"type": "module"` in package.json)
-- JSDoc + TypeScript validation (`npm run check` — `tsc --checkJs`)
+- JSDoc + TypeScript validation (`npm run check`, which runs `tsc --checkJs`)
 - Biome for linting and formatting (single quotes, 2-space indent, 120 line width)
 - Node.js built-in test runner (`node --test`)
 - Kebab-case filenames
