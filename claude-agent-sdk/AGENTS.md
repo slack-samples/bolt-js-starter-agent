@@ -2,11 +2,13 @@
 
 This file provides guidance to coding agents (Claude Code, Codex, Cursor, and others) when working with code in this repository.
 
-To install the Slack plugin for your coding agent, follow [Claude Code, Codex, Cursor, and Other Coding Agents](./README.md#claude-code-codex-cursor-and-other-coding-agents) in the README.
-
 ## What This Is
 
 A **Starter Agent** for Slack built with Bolt for JavaScript and the **Claude Agent SDK**. This is a minimal starter template. It includes one example tool (emoji reactions) and optional Slack MCP Server integration.
+
+## Slack Plugin
+
+To install the Slack plugin for your coding agent, follow [Claude Code, Codex, Cursor, and Other Coding Agents](./README.md#claude-code-codex-cursor-and-other-coding-agents) in the README.
 
 ## Commands
 

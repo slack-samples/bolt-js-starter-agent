@@ -2,8 +2,6 @@
 
 This file provides guidance to coding agents (Claude Code, Codex, Cursor, and others) when working with code in this repository.
 
-To install the Slack plugin for your coding agent, follow [Claude Code, Codex, Cursor, and Other Coding Agents](./README.md#claude-code-codex-cursor-and-other-coding-agents) in the README.
-
 ## What This Is
 
 A monorepo containing two parallel implementations of a **Starter Agent** for Slack built with Bolt for JavaScript. Both implementations are functionally identical from the Slack user's perspective but use different AI agent frameworks:
@@ -12,6 +10,10 @@ A monorepo containing two parallel implementations of a **Starter Agent** for Sl
 - `openai-agents-sdk/` -- Built with **OpenAI Agents SDK**
 
 This is a minimal starter template. It includes one example tool (emoji reactions) and optional Slack MCP Server integration.
+
+## Slack Plugin
+
+To install the Slack plugin for your coding agent, follow [Claude Code, Codex, Cursor, and Other Coding Agents](./README.md#claude-code-codex-cursor-and-other-coding-agents) in the README.
 
 ## Commands
 
