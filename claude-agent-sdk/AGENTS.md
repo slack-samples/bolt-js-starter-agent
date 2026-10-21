@@ -16,9 +16,6 @@ Run `npm run lint`, `npm run check`, and `npm test`. CI runs the same on every P
 
 ## Code Style
 
-- ES modules (`"type": "module"` in package.json)
-- JSDoc + TypeScript validation (`npm run check`, which runs `tsc --checkJs`)
-- Biome for linting and formatting (single quotes, 2-space indent, 120 line width)
-- Node.js built-in test runner (`node --test`)
+- JSDoc + TypeScript validation (`npm run check`)
 - Kebab-case filenames
-- No comments. Code should explain itself: when a comment feels needed, use a well-named function or variable, a test, or a type instead. A change's "why" goes in the PR description.
+- No code comments. Make the code explain itself with clear names, tests, or types. Put the reason for a change in the PR description.
