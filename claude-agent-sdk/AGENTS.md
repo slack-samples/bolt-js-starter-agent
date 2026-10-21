@@ -60,3 +60,4 @@ Each sub-module has a `register(app)` function called from `listeners/index.js`.
 - Biome for linting and formatting (single quotes, 2-space indent, 120 line width)
 - Node.js built-in test runner (`node --test`)
 - Kebab-case filenames
+- No comments. Code should explain itself: when a comment feels needed, use a well-named function or variable, a test, or a type instead. A change's "why" goes in the PR description.
