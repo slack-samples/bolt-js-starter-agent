@@ -10,22 +10,9 @@ A **Starter Agent** for Slack built with Bolt for JavaScript and the **Claude Ag
 
 To install the Slack plugin for your coding agent, follow [Claude Code, Codex, Cursor, and Other Coding Agents](./README.md#claude-code-codex-cursor-and-other-coding-agents) in the README.
 
-## Commands
+## Before you finish
 
-```sh
-# Run the app (requires .env with ANTHROPIC_API_KEY; Slack tokens optional with CLI)
-slack run          # via Slack CLI
-node app.js        # directly
-
-# Lint and format (CI runs these on push to main and all PRs)
-npm run lint
-
-# Type check (JSDoc + TypeScript validation)
-npm run check
-
-# Run tests
-npm test
-```
+Run `npm run lint`, `npm run check`, and `npm test`. CI runs the same on every PR.
 
 ## Architecture
 
