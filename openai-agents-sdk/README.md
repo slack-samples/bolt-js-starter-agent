@@ -6,10 +6,10 @@ A minimal starter template for building AI-powered Slack agents with [Bolt for J
 
 The starter agent interacts with users through four entry points:
 
-* **App Home** — Displays a welcome message with instructions on how to interact.
-* **Direct Messages** — Users message the agent directly. It responds in-thread, maintaining context across follow-ups.
-* **Channel @mentions** — Mention the agent in any channel to get a response without leaving the conversation.
-* **Assistant Panel** — Users click _Add Agent_ in Slack, select the agent, and pick from suggested prompts or type a message.
+- **App Home** — Displays a welcome message with instructions on how to interact.
+- **Direct Messages** — Users message the agent directly. It responds in-thread, maintaining context across follow-ups.
+- **Channel @mentions** — Mention the agent in any channel to get a response without leaving the conversation.
+- **Assistant Panel** — Users click _Add Agent_ in Slack, select the agent, and pick from suggested prompts or type a message.
 
 The template also includes one example tool (emoji reactions). Add your own tools to customize it for your use case.
 
@@ -71,8 +71,8 @@ npx skills add slackapi/slack-skills-plugin -y -a opencode
 
 Install the latest version of the Slack CLI for your operating system:
 
-* [Slack CLI for macOS & Linux](https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux/)
-* [Slack CLI for Windows](https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-windows/)
+- [Slack CLI for macOS & Linux](https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux/)
+- [Slack CLI for Windows](https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-windows/)
 
 You'll also need to log in if this is your first time using the Slack CLI.
 
@@ -308,18 +308,18 @@ Every incoming request is routed to a "listener". This directory groups each lis
 
 **`/listeners/events`** — Handles incoming events:
 
-* `app-home-opened.js` — Publishes the App Home view, or pins suggested prompts to the agent DM Messages tab (branches on `event.tab`).
-* `app-mentioned.js` — Responds to @mentions in channels.
-* `message.js` — Responds to direct messages from users.
+- `app-home-opened.js` — Publishes the App Home view, or pins suggested prompts to the agent DM Messages tab (branches on `event.tab`).
+- `app-mentioned.js` — Responds to @mentions in channels.
+- `message.js` — Responds to direct messages from users.
 
 **`/listeners/actions`** — Handles interactive components:
 
-* `feedback-buttons.js` — Handles thumbs up/down feedback on agent responses.
+- `feedback-buttons.js` — Handles thumbs up/down feedback on agent responses.
 
 **`/listeners/views`** — Builds Block Kit views:
 
-* `app-home-builder.js` — Constructs the App Home Block Kit view.
-* `feedback-builder.js` — Creates the feedback button block attached to responses.
+- `app-home-builder.js` — Constructs the App Home Block Kit view.
+- `feedback-builder.js` — Creates the feedback button block attached to responses.
 
 ### `/agent`
 
