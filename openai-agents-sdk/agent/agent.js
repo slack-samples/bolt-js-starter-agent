@@ -45,6 +45,10 @@ Also use them when the user explicitly asks you to perform a Slack action.`;
 
 const SLACK_MCP_URL = 'https://mcp.slack.com/mcp';
 
+// Model calls allowed per run. Tool-heavy requests need more than the SDK's
+// default of 10.
+export const MAX_TURNS = 50;
+
 export const starterAgent = new Agent({
   name: 'Starter Agent',
   instructions: SYSTEM_PROMPT,
@@ -68,11 +72,11 @@ export async function runAgent(inputItems, deps) {
     try {
       await mcpServer.connect();
       const agentWithMcp = starterAgent.clone({ mcpServers: [mcpServer] });
-      return await run(agentWithMcp, inputItems, { context: deps });
+      return await run(agentWithMcp, inputItems, { context: deps, maxTurns: MAX_TURNS });
     } finally {
       await mcpServer.close();
     }
   }
 
-  return await run(starterAgent, inputItems, { context: deps });
+  return await run(starterAgent, inputItems, { context: deps, maxTurns: MAX_TURNS });
 }
