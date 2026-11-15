@@ -21,7 +21,7 @@ describe('handleMessage', () => {
     };
   });
 
-  it('answers a thread reply in a thread the agent is part of', async () => {
+  it('handles a thread reply in a thread the agent is part of', async () => {
     const event = {
       channel: 'C123',
       channel_type: 'channel',
