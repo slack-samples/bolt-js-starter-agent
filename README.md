@@ -6,10 +6,10 @@ A minimal starter template for building AI-powered Slack agents with [Bolt for J
 
 This repo contains the same app built with two different AI agent frameworks. Pick the one that fits your stack:
 
-| App | Directory | Get Started | Framework |
-|-----|-----------|-------------|-----------|
-| **Claude Agent SDK** | `claude-agent-sdk/` | [View README](./claude-agent-sdk/README.md) | [claude-agent-sdk](https://platform.claude.com/docs/en/agent-sdk/overview) |
-| **OpenAI Agents SDK** | `openai-agents-sdk/` | [View README](./openai-agents-sdk/README.md) | [openai-agents](https://openai.github.io/openai-agents-js/) |
+| App                   | Directory            | Get Started                                  | Framework                                                                  |
+| --------------------- | -------------------- | -------------------------------------------- | -------------------------------------------------------------------------- |
+| **Claude Agent SDK**  | `claude-agent-sdk/`  | [View README](./claude-agent-sdk/README.md)  | [claude-agent-sdk](https://platform.claude.com/docs/en/agent-sdk/overview) |
+| **OpenAI Agents SDK** | `openai-agents-sdk/` | [View README](./openai-agents-sdk/README.md) | [openai-agents](https://openai.github.io/openai-agents-js/)                |
 
 All implementations share the same Slack listener layer and the same user experience. The only difference is how the agent is defined and executed under the hood.
 
@@ -60,10 +60,10 @@ npx skills add slackapi/slack-skills-plugin -y -a opencode
 
 The starter agent interacts with users through four entry points:
 
-* **App Home** — Displays a welcome message with instructions on how to interact.
-* **Direct Messages** — Users message the agent directly. It responds in-thread, maintaining context across follow-ups.
-* **Channel @mentions** — Mention the agent in any channel to get a response without leaving the conversation.
-* **Assistant Panel** — Users click _Add Agent_ in Slack, select the agent, and pick from suggested prompts or type a message.
+- **App Home** — Displays a welcome message with instructions on how to interact.
+- **Direct Messages** — Users message the agent directly. It responds in-thread, maintaining context across follow-ups.
+- **Channel @mentions** — Mention the agent in any channel to get a response without leaving the conversation.
+- **Assistant Panel** — Users click _Add Agent_ in Slack, select the agent, and pick from suggested prompts or type a message.
 
 When connected to the [Slack MCP Server](https://github.com/slackapi/slack-mcp-server), the agent can search messages and files, read channel history and threads, send and schedule messages, and create and update canvases. The template also includes one example tool (emoji reactions). Add your own tools to customize the agent for your use case.
 
@@ -71,10 +71,10 @@ When connected to the [Slack MCP Server](https://github.com/slackapi/slack-mcp-s
 
 Once the agent is running, there are several ways to interact:
 
-* **App Home** — Open the agent in Slack and click the _Home_ tab to see a welcome message.
-* **Direct Messages** — Open a DM with the agent. Pick a suggested prompt or type your own message, and the agent will reply in a thread.
-* **Channel @mentions** — Invite the agent to a channel by typing `/invite @agent-name`, then @mention it with your message. It responds in a thread so the channel stays clean.
-* **Assistant Panel** — Click _Add Agent_ in the top-right corner of Slack, select the agent, and choose a suggested prompt like _Write a Message_, _Summarize_, or _Brainstorm_.
+- **App Home** — Open the agent in Slack and click the _Home_ tab to see a welcome message.
+- **Direct Messages** — Open a DM with the agent. Pick a suggested prompt or type your own message, and the agent will reply in a thread.
+- **Channel @mentions** — Invite the agent to a channel by typing `/invite @agent-name`, then @mention it with your message. It responds in a thread so the channel stays clean.
+- **Assistant Panel** — Click _Add Agent_ in the top-right corner of Slack, select the agent, and choose a suggested prompt like _Write a Message_, _Summarize_, or _Brainstorm_.
 
 For full setup instructions, pick a framework above and follow the README in that directory.
 
