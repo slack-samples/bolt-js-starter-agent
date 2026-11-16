@@ -31,7 +31,11 @@ export async function handleMessage({ client, context, event, logger, say, saySt
     if (event.text?.includes(`<@${context.botUserId}>`)) return;
 
     // Channel thread replies are handled only if the bot is already engaged
-    const session = sessionStore.getSession(event.channel, /** @type {string} */ (event.thread_ts));
+    const session = sessionStore.getSession(
+      event.channel,
+      /** @type {string} */ (event.thread_ts),
+      /** @type {string} */ (context.userId),
+    );
     if (session === null) return;
   } else {
     // Top-level channel messages are handled by app_mentioned
@@ -45,7 +49,7 @@ export async function handleMessage({ client, context, event, logger, say, saySt
     const userId = /** @type {string} */ (context.userId);
 
     // Get session ID for conversation context
-    const existingSessionId = sessionStore.getSession(channelId, threadTs);
+    const existingSessionId = sessionStore.getSession(channelId, threadTs, userId);
 
     // Set assistant thread status with loading messages
     await setStatus({
@@ -71,7 +75,7 @@ export async function handleMessage({ client, context, event, logger, say, saySt
 
     // Store session ID for future context
     if (newSessionId) {
-      sessionStore.setSession(channelId, threadTs, newSessionId);
+      sessionStore.setSession(channelId, threadTs, userId, newSessionId);
     }
   } catch (e) {
     logger.error(`Failed to handle message: ${e}`);

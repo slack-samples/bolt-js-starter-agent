@@ -38,7 +38,7 @@ export async function handleAppMentioned({ client, context, event, logger, say, 
     });
 
     // Get session ID for conversation context
-    const existingSessionId = sessionStore.getSession(channelId, threadTs);
+    const existingSessionId = sessionStore.getSession(channelId, threadTs, userId);
 
     // Run the agent with deps for tool access
     const deps = { client, userId, channelId, threadTs, messageTs: event.ts, userToken: context.userToken };
@@ -52,7 +52,7 @@ export async function handleAppMentioned({ client, context, event, logger, say, 
 
     // Store session ID for future context
     if (newSessionId) {
-      sessionStore.setSession(channelId, threadTs, newSessionId);
+      sessionStore.setSession(channelId, threadTs, userId, newSessionId);
     }
   } catch (e) {
     logger.error(`Failed to handle app mention: ${e}`);
