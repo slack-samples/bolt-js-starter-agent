@@ -11,6 +11,15 @@ function isGenericMessageEvent(event) {
 }
 
 /**
+ * @param {import('@slack/types').GenericMessageEvent} event
+ * @param {string | undefined} botUserId
+ * @returns {boolean}
+ */
+function isAppMention(event, botUserId) {
+  return event.text?.includes(`<@${botUserId}>`) ?? false;
+}
+
+/**
  * Handle messages sent to the agent via DM or in threads the bot is part of.
  * @param {import('@slack/bolt').AllMiddlewareArgs & import('@slack/bolt').SlackEventMiddlewareArgs<'message'>} args
  * @returns {Promise<void>}
@@ -28,6 +37,8 @@ export async function handleMessage({ client, context, event, logger, say, saySt
   if (isDm) {
     // DMs are always handled
   } else if (isThreadReply) {
+    if (isAppMention(event, context.botUserId)) return;
+
     // Channel thread replies are handled only if the bot is already engaged
     const history = conversationStore.getHistory(event.channel, /** @type {string} */ (event.thread_ts));
     if (history === null) return;
