@@ -137,6 +137,9 @@ export async function runAgent(text, sessionId = undefined, deps = undefined) {
     mcpServers,
     allowedTools,
     permissionMode: 'bypassPermissions',
+    tools: [],
+    settingSources: [],
+    strictMcpConfig: true,
     ...(sessionId && { resume: sessionId }),
   };
 
