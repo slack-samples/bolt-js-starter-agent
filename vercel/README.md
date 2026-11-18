@@ -267,6 +267,10 @@ The functions in `api/slack/` serve `app-vercel.js` on Vercel: `events.js` recei
 
 `vercel.json` rewrites `/slack/*` requests to the functions in `api/slack/`, so the request URLs in `manifest.json` stay `/slack/events`, `/slack/install`, and `/slack/oauth_redirect`.
 
+### `.vercelignore`
+
+`.vercelignore` keeps your local `.env` and the Slack CLI's `.slack/` folder out of what `npx vercel deploy` uploads. Set values for Vercel with `npx vercel env add` instead.
+
 ### `/public`
 
 The empty `public/` directory is what Vercel serves as static files. Without it, Vercel would serve the project's source files at the deployment's URL.
