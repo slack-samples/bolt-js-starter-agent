@@ -1,0 +1,3 @@
+{
+  "rewrites": [{ "source": "/slack/:path*", "destination": "/api/slack/:path*" }]
+}
