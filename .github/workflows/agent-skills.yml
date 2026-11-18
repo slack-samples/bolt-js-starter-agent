@@ -21,9 +21,9 @@ jobs:
           node-version: 24.x
       - name: Update the skills in each skills-lock.json
         run: |
-          for lock in $(find . -name skills-lock.json -not -path "*/node_modules/*"); do
+          while IFS= read -r lock; do
             (cd "$(dirname "$lock")" && npx --yes skills@1 update --project --yes)
-          done
+          done < <(find . -name skills-lock.json -not -path "*/node_modules/*")
       - name: Open a pull request with the updates
         env:
           GH_TOKEN: ${{ github.token }}
