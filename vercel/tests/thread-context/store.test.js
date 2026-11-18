@@ -1,6 +1,8 @@
 import assert from 'node:assert';
 import { beforeEach, describe, it, mock } from 'node:test';
 
+import { getCache } from '@vercel/functions';
+
 import { ConversationStore } from '../../thread-context/store.js';
 
 describe('ConversationStore', () => {
@@ -53,6 +55,20 @@ describe('ConversationStore', () => {
     const messages = [{ role: 'user', content: 'hi' }];
     await store.setHistory('C1', 'T1', 'U1', messages);
     assert.deepStrictEqual(cache.set.mock.calls[0].arguments, ['C1:T1:U1', messages, { ttl: 86400 }]);
+  });
+
+  it('passes a custom ttl to the cache', async () => {
+    const messages = [{ role: 'user', content: 'hi' }];
+    await new ConversationStore(cache, 60).setHistory('C1', 'T1', 'U1', messages);
+    assert.deepStrictEqual(cache.set.mock.calls[0].arguments, ['C1:T1:U1', messages, { ttl: 60 }]);
+  });
+
+  it('expires history after the ttl', async (t) => {
+    t.mock.timers.enable({ apis: ['Date'] });
+    const expiring = new ConversationStore(getCache({ namespace: 'thread-context-expiry-test' }), 60);
+    await expiring.setHistory('C1', 'T1', 'U1', [{ role: 'user', content: 'hi' }]);
+    t.mock.timers.tick(61 * 1000);
+    assert.strictEqual(await expiring.getHistory('C1', 'T1', 'U1'), null);
   });
 
   it('overwrites existing key', async () => {

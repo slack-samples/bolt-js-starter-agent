@@ -1,3 +1,6 @@
 {
-  "rewrites": [{ "source": "/slack/:path*", "destination": "/api/slack/:path*" }]
+  "rewrites": [
+    { "source": "/slack/oauth_redirect", "destination": "/api/slack/oauth-redirect" },
+    { "source": "/slack/:path*", "destination": "/api/slack/:path*" }
+  ]
 }

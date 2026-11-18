@@ -14,5 +14,5 @@ logs/
 # Node.js
 node_modules/
 
-# OAuth
-data/
+# Vercel
+.vercel/

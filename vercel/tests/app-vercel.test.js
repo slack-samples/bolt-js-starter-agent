@@ -11,6 +11,7 @@ describe('app-vercel', () => {
     process.env.SLACK_CLIENT_ID = '123.456';
     process.env.SLACK_CLIENT_SECRET = 'test-client-secret';
     process.env.SLACK_BOT_TOKEN = 'xoxb-test';
+    process.env.SLACK_STATE_SECRET = 'test-state-secret';
     ({ handler, receiver } = await import('../app-vercel.js'));
   });
 

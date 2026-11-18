@@ -200,10 +200,11 @@ npx vercel env add SLACK_SIGNING_SECRET --environment production
 npx vercel env add SLACK_CLIENT_ID --environment production
 npx vercel env add SLACK_CLIENT_SECRET --environment production
 npx vercel env add SLACK_REDIRECT_URI --environment production
+npx vercel env add SLACK_STATE_SECRET --environment production
 npx vercel env add SLACK_BOT_TOKEN --environment production
 ```
 
-Set `SLACK_REDIRECT_URI` to `https://YOUR_PRODUCTION_DOMAIN/slack/oauth_redirect`.
+Set `SLACK_REDIRECT_URI` to `https://YOUR_PRODUCTION_DOMAIN/slack/oauth_redirect`, and `SLACK_STATE_SECRET` to a long random string, such as the output of `openssl rand -hex 32`.
 
 5. Deploy to production:
 
@@ -260,11 +261,15 @@ npm test
 
 ### `api/slack/`
 
-The functions in `api/slack/` serve `app-vercel.js` on Vercel: `events.js` receives events and interactions, `install.js` starts the OAuth install, and `oauth_redirect.js` completes it.
+The functions in `api/slack/` serve `app-vercel.js` on Vercel: `events.js` receives events and interactions, `install.js` starts the OAuth install, and `oauth-redirect.js` completes it.
 
 ### `vercel.json`
 
 `vercel.json` rewrites `/slack/*` requests to the functions in `api/slack/`, so the request URLs in `manifest.json` stay `/slack/events`, `/slack/install`, and `/slack/oauth_redirect`.
+
+### `/public`
+
+The empty `public/` directory is what Vercel serves as static files. Without it, Vercel would serve the project's source files at the deployment's URL.
 
 ### `/listeners`
 

@@ -14,7 +14,7 @@ export const receiver = new VercelReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   clientId: process.env.SLACK_CLIENT_ID,
   clientSecret: process.env.SLACK_CLIENT_SECRET,
-  stateSecret: 'bolt-js-starter-agent',
+  stateSecret: process.env.SLACK_STATE_SECRET,
   scopes: botScopes,
   redirectUri: process.env.SLACK_REDIRECT_URI,
   installationStore: new BlobInstallationStore(),

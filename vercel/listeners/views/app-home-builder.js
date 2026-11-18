@@ -71,7 +71,7 @@ export function buildAppHomeView(installUrl = null, isConnected = false) {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: '\ud83d\udd34 *Slack MCP Server is disconnected.* <https://github.com/slack-samples/bolt-js-starter-agent/blob/main/openai-agents-sdk/README.md#slack-mcp-server|Learn how to enable the Slack MCP Server.>',
+          text: '\ud83d\udd34 *Slack MCP Server is disconnected.* <https://github.com/slack-samples/bolt-js-starter-agent/blob/main/vercel/README.md#slack-mcp-server|Learn how to enable the Slack MCP Server.>',
         },
       },
       {
