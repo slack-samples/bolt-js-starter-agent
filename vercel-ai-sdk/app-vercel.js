@@ -27,7 +27,7 @@ export const receiver = new VercelReceiver({
 export const app = new App({
   receiver,
   deferInitialization: true,
-  logLevel: LogLevel.DEBUG,
+  logLevel: LogLevel.INFO,
   ignoreSelf: false,
 });
 
