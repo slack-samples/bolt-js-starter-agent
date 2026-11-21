@@ -57,8 +57,9 @@ export class BlobInstallationStore {
         installation.user = userInstallation?.user ?? { id: installation.user.id, token: undefined, scopes: undefined };
       }
       return installation;
-    } catch {
+    } catch (error) {
       if (this._fallbackBotToken) {
+        console.warn(`Falling back to SLACK_BOT_TOKEN: ${error}`);
         return /** @type {any} */ ({ bot: { token: this._fallbackBotToken } });
       }
       throw new Error('No installation found and no fallback bot token configured');
