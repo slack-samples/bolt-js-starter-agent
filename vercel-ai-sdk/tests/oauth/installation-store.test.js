@@ -92,10 +92,13 @@ describe('BlobInstallationStore', () => {
     assert.strictEqual(fetched.bot.token, 'xoxb-1');
   });
 
-  it('falls back to the bot token when nothing is stored', async () => {
-    const store = new BlobInstallationStore({ blob, fallbackBotToken: 'xoxb-fallback' });
+  it('falls back to the bot token and its auth.test IDs when nothing is stored', async () => {
+    const client = { auth: { test: mock.fn(async () => ({ ok: true, bot_id: 'B0', user_id: 'UBOT' })) } };
+    const store = new BlobInstallationStore({ blob, fallbackBotToken: 'xoxb-fallback', client });
     const fetched = await store.fetchInstallation({ teamId: 'T1', isEnterpriseInstall: false });
-    assert.deepStrictEqual(fetched, { bot: { token: 'xoxb-fallback' } });
+    assert.deepStrictEqual(fetched, { bot: { id: 'B0', token: 'xoxb-fallback', userId: 'UBOT' } });
+    await store.fetchInstallation({ teamId: 'T1', isEnterpriseInstall: false });
+    assert.strictEqual(client.auth.test.mock.callCount(), 1);
   });
 
   it("throws when nothing is stored and there's no fallback", async () => {

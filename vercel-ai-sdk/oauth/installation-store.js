@@ -1,3 +1,4 @@
+import { webApi } from '@slack/bolt';
 import { del, get, list, put } from '@vercel/blob';
 
 /**
@@ -20,12 +21,21 @@ export class BlobInstallationStore {
    * @param {object} [options]
    * @param {{ put: typeof put, get: typeof get, del: typeof del, list: typeof list }} [options.blob]
    * @param {string} [options.fallbackBotToken]
+   * @param {{ auth: { test: () => Promise<{ bot_id?: string, user_id?: string }> } }} [options.client]
    */
-  constructor({ blob = { put, get, del, list }, fallbackBotToken = process.env.SLACK_BOT_TOKEN } = {}) {
+  constructor({
+    blob = { put, get, del, list },
+    fallbackBotToken = process.env.SLACK_BOT_TOKEN,
+    client = new webApi.WebClient(fallbackBotToken),
+  } = {}) {
     /** @private */
     this._blob = blob;
     /** @private @type {string | undefined} */
     this._fallbackBotToken = fallbackBotToken;
+    /** @private */
+    this._client = client;
+    /** @private @type {{ id?: string, token: string, userId?: string } | undefined} */
+    this._fallbackBot = undefined;
   }
 
   /**
@@ -60,7 +70,7 @@ export class BlobInstallationStore {
     } catch (error) {
       if (this._fallbackBotToken) {
         console.warn(`Falling back to SLACK_BOT_TOKEN: ${error}`);
-        return /** @type {any} */ ({ bot: { token: this._fallbackBotToken } });
+        return /** @type {any} */ ({ bot: await this._fetchFallbackBot() });
       }
       throw new Error('No installation found and no fallback bot token configured');
     }
@@ -77,6 +87,23 @@ export class BlobInstallationStore {
     if (blobs.length > 0) {
       await this._blob.del(blobs.map((b) => b.pathname));
     }
+  }
+
+  /**
+   * Looks up the fallback bot's IDs with auth.test once and caches them.
+   * @private
+   * @returns {Promise<{ id?: string, token: string, userId?: string }>}
+   */
+  async _fetchFallbackBot() {
+    if (!this._fallbackBot) {
+      const auth = await this._client.auth.test();
+      this._fallbackBot = {
+        id: auth.bot_id,
+        token: /** @type {string} */ (this._fallbackBotToken),
+        userId: auth.user_id,
+      };
+    }
+    return this._fallbackBot;
   }
 
   /**
